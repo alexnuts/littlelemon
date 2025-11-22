@@ -1,0 +1,66 @@
+# MARK: - Xcode
+# User-specific Xcode data (Breakpoints, open files, user schemes)
+*.xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Derived Data (Intermediate build files)
+# It is recommended to keep this in your global Xcode settings, 
+# but good to ignore locally just in case.
+DerivedData/
+
+# Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# MARK: - Swift Package Manager
+# Packages folders
+.build/
+Packages/
+
+# Note: generally you SHOULD commit Package.resolved. 
+# Only ignore it if you want to force auto-updates on every clone (rare).
+# *.resolved
+
+# Xcode generated SwiftPM files
+.swiftpm/xcode/xcuserdata/
+
+# MARK: - Fastlane
+# It is recommended to not store the screenshots in the git repo.
+fastlane/test_output
+fastlane/report.xml
+fastlane/screenshots
+fastlane/README.md
+fastlane/metadata/android/*
+
+# If you use Match (which you do), usually you commit the Matchfile 
+# but NOT the actual certificates/keys if they are local.
+# Since you store them in a separate git repo, just ensure no 
+# local backups are committed here.
+fastlane/gc_keys
+
+# MARK: - CocoaPods (If you use it)
+# We recommend checking in the Pods directory for reproducibility, 
+# but if you prefer not to, uncomment the line below:
+# Pods/
+# Podfile.lock is required for reproducibility, do not ignore it.
+
+# MARK: - OS / Misc
+.DS_Store
+.DS_Store?
+.Trashes
+.Spotlight-V100
+.DocumentRevisions-V100
+._*
+Thumbs.db
+Desktop.ini
+
+# MARK: - Local Configuration
+# Ignore local config files that might contain API keys
+# config.xcconfig
+# Secrets.swift
