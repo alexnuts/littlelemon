@@ -13,12 +13,12 @@ struct Home: View {
             TabView {
                 Menu()
                     .tabItem {
-                        Label("Item 1",systemImage: "list.dash")
+                        Label("Menu",systemImage: "list.dash")
                     }
 
-                Text("2").background(.cyan)
+                UserProfile()
                     .tabItem {
-                        Text("Item 2")
+                        Label("Profile",systemImage: "square.and.pencil")
                     }
 
             }.navigationBarBackButtonHidden(true)

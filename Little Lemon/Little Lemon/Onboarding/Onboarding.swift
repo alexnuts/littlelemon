@@ -67,6 +67,8 @@ struct Onboarding: View {
                 }
             }
             .padding(48.0)
+        }.onAppear{
+            isLoggedIn = SessionUtils.isLoggedIn
         }
     }
 }

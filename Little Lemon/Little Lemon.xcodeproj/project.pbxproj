@@ -14,6 +14,7 @@
 		5652C79A2ED743B8004EA129 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5652C7902ED743B8004EA129 /* Assets.xcassets */; };
 		5652C7A42ED743F3004EA129 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7A32ED743F3004EA129 /* Home.swift */; };
 		5652C7AB2ED782A4004EA129 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7AA2ED782A4004EA129 /* Menu.swift */; };
+		5652C7B22ED81493004EA129 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7B12ED81493004EA129 /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5652C7942ED743B8004EA129 /* SessionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUtils.swift; sourceTree = "<group>"; };
 		5652C7A32ED743F3004EA129 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		5652C7AA2ED782A4004EA129 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		5652C7B12ED81493004EA129 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		565B2D052ED20DF7006380F1 /* Little Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Lemon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -49,6 +51,7 @@
 		5652C7952ED743B8004EA129 /* Little Lemon */ = {
 			isa = PBXGroup;
 			children = (
+				5652C7AF2ED81489004EA129 /* Profile */,
 				5652C7A82ED78292004EA129 /* Menu */,
 				5652C7A12ED743E7004EA129 /* Home */,
 				5652C79C2ED743D6004EA129 /* Onboarding */,
@@ -82,6 +85,14 @@
 				5652C7AA2ED782A4004EA129 /* Menu.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		5652C7AF2ED81489004EA129 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5652C7B12ED81493004EA129 /* UserProfile.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		565B2CFC2ED20DF7006380F1 = {
@@ -182,6 +193,7 @@
 				5652C7A42ED743F3004EA129 /* Home.swift in Sources */,
 				5652C7982ED743B8004EA129 /* SessionUtils.swift in Sources */,
 				5652C7992ED743B8004EA129 /* Little_LemonApp.swift in Sources */,
+				5652C7B22ED81493004EA129 /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
