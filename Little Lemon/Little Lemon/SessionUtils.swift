@@ -1,0 +1,33 @@
+//
+//  SessionUtils.swift
+//  Little Lemon
+//
+//  Created by Alex Oriekhov on 24.11.2025.
+//
+
+import Foundation
+
+class SessionUtils {
+
+    private static let kFirstNameKey = "user_data_first_name_key"
+    private static let kLastNameKey = "user_data_last_name_key"
+    private static let kEmailKey = "user_data_email_address_key"
+
+    static func save(
+        firstName: String,
+        lastName: String,
+        email: String
+    ) {
+        let defaults = UserDefaults.standard
+        defaults.set(firstName, forKey: kFirstNameKey)
+        defaults.set(lastName, forKey: kLastNameKey)
+        defaults.set(email, forKey: kEmailKey)
+    }
+
+
+    static func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+}
