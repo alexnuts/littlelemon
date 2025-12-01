@@ -28,32 +28,34 @@ struct Menu: View {
             ) { (dishes: [Dish]) in
                 List {
                     ForEach(dishes) { dish in
-                        // Step 10 (Optional): Navigation to details
-                        // NavigationLink(destination: DishDetails(dish: dish)) { ... }
+                        NavigationLink(destination: DishDetails(dish: dish)) {
+                            HStack {
+                                VStack(
+                                    alignment: .leading
+                                ) {
+                                    Text(dish.title ?? "")
+                                        .font(.title)
 
-                        HStack {
-                            VStack{
-                                Text(dish.title ?? "")
-                                    .font(.title)
-//                                Spacer(minLength: 8.0)
-                                
-                                let priceStr =  dish.price > 0.0 ? String(format: "%.2f", dish.price) : "-"
-                                Text("$\(priceStr)")
-                            }
-                            
+                                    let priceStr =
+                                        dish.price > 0.0
+                                        ? String(format: "%.2f", dish.price)
+                                        : "-"
+                                    Text("$\(priceStr)")
+                                }
 
-                            Spacer()
-                            
-                            let imgUrl = URL(string: dish.image ?? "")
-                            AsyncImage(url: imgUrl) {
-                                image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            } placeholder: {
-                                ProgressView()
+                                Spacer()
+
+                                let imgUrl = URL(string: dish.image ?? "")
+                                AsyncImage(url: imgUrl) {
+                                    image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .frame(width: 50, height: 50)
+                                .cornerRadius(8.0)
                             }
-                            .frame(width: 50, height: 50)
-                            .cornerRadius(8.0)
                         }
                     }
                 }

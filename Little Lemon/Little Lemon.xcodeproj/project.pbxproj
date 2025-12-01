@@ -24,6 +24,7 @@
 		5652C7DC2EDAED01004EA129 /* Dish+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7DB2EDAED01004EA129 /* Dish+Extension.swift */; };
 		5652C7E22EDE360C004EA129 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7E12EDE360C004EA129 /* Persistence.swift */; };
 		5652C7E62EDE3623004EA129 /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7E52EDE3623004EA129 /* FetchedObjects.swift */; };
+		5652C7EC2EDE41F3004EA129 /* DishDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7EB2EDE41F3004EA129 /* DishDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		5652C7DB2EDAED01004EA129 /* Dish+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dish+Extension.swift"; sourceTree = "<group>"; };
 		5652C7E12EDE360C004EA129 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5652C7E52EDE3623004EA129 /* FetchedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
+		5652C7EB2EDE41F3004EA129 /* DishDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetails.swift; sourceTree = "<group>"; };
 		565B2D052ED20DF7006380F1 /* Little Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Lemon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 			children = (
 				5652C7AA2ED782A4004EA129 /* Menu.swift */,
 				5652C7CD2EDAEA67004EA129 /* MenuModel.swift */,
+				5652C7EB2EDE41F3004EA129 /* DishDetails.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				5652C7E22EDE360C004EA129 /* Persistence.swift in Sources */,
 				5652C7962ED743B8004EA129 /* Onboarding.swift in Sources */,
 				5652C7E62EDE3623004EA129 /* FetchedObjects.swift in Sources */,
+				5652C7EC2EDE41F3004EA129 /* DishDetails.swift in Sources */,
 				5652C7972ED743B8004EA129 /* ContentView.swift in Sources */,
 				5652C7CE2EDAEA67004EA129 /* MenuModel.swift in Sources */,
 				5652C7B92EDAE4BB004EA129 /* DTOs.swift in Sources */,

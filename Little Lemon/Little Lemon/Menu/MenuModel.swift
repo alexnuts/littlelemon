@@ -16,6 +16,9 @@ class MenuModel: ObservableObject {
 
     func reload(_ ctx: NSManagedObjectContext) async {
         do {
+//            PersistenceController.shared.clear()
+//            try? ctx.save()
+            
             let menu = try await LittleLemonService.fetchMenuItems()
             Dish.createDishesFrom(menuItems: menu, ctx)
             self.menuItems = menu

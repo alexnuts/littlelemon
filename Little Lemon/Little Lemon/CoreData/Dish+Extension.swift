@@ -14,9 +14,8 @@ extension Dish {
         menuItems: [MenuItem],
         _ context: NSManagedObjectContext
     ) {
-        PersistenceController.shared.clear()
         menuItems
-            .filter { !exists(name: $0.title, in: context) }
+            .filter { !exists(title: $0.title, in: context) }
             .forEach { (menuItem) in
                 let dish = Dish(context: context)
                 dish.title = menuItem.title
@@ -28,11 +27,11 @@ extension Dish {
     }
 
     private static func exists(
-        name: String,
+        title: String,
         in context: NSManagedObjectContext
     ) -> Bool {
         let fetchRequest: NSFetchRequest<Dish> = Dish.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "title == %@", name)
+        fetchRequest.predicate = NSPredicate(format: "title == %@", title)
         return try! context.count(for: fetchRequest) > 0
     }
     
