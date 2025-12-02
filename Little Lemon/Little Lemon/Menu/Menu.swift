@@ -14,17 +14,21 @@ struct Menu: View {
 
     @ObservedObject var model = MenuModel()
 
+    @State private var searchText = ""
+
     var body: some View {
         VStack {
             Text("Little Lemon Menu")
                 .font(.title)
                 .padding()
 
+            TextField("Search menu", text: $searchText)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
+
             FetchedObjects(
-                predicate: NSPredicate(value: true),
-                sortDescriptors: [
-                    NSSortDescriptor(key: "title", ascending: true)
-                ]
+                predicate: buildPredicate(),
+                sortDescriptors: buildSortDescriptors(),
             ) { (dishes: [Dish]) in
                 List {
                     ForEach(dishes) { dish in
@@ -62,6 +66,24 @@ struct Menu: View {
             }
         }.task {
             await model.reload(viewContext)
+        }
+    }
+
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+        return [
+            NSSortDescriptor(
+                key: "title",
+                ascending: true,
+                selector: #selector(NSString.localizedStandardCompare)
+            )
+        ]
+    }
+
+    func buildPredicate() -> NSPredicate {
+        if searchText.isEmpty {
+            return NSPredicate(value: true)
+        } else {
+            return NSPredicate(format: "title CONTAINS[cd] %@", searchText)
         }
     }
 }
