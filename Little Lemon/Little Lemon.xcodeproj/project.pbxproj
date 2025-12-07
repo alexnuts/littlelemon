@@ -25,6 +25,12 @@
 		5652C7E22EDE360C004EA129 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7E12EDE360C004EA129 /* Persistence.swift */; };
 		5652C7E62EDE3623004EA129 /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7E52EDE3623004EA129 /* FetchedObjects.swift */; };
 		5652C7EC2EDE41F3004EA129 /* DishDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C7EB2EDE41F3004EA129 /* DishDetails.swift */; };
+		5652C81B2EE17F5D004EA129 /* LLTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C81A2EE17F5D004EA129 /* LLTheme.swift */; };
+		5652C8222EE18721004EA129 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C8212EE18721004EA129 /* Color+Ext.swift */; };
+		5652C82B2EE1897B004EA129 /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C82A2EE1897B004EA129 /* HeroView.swift */; };
+		5652C82F2EE6242C004EA129 /* AppHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C82E2EE6242C004EA129 /* AppHeader.swift */; };
+		5652C8332EE62C4F004EA129 /* Text+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C8322EE62C4F004EA129 /* Text+Ext.swift */; };
+		5652C8392EE62FED004EA129 /* Button+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5652C8382EE62FED004EA129 /* Button+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +52,12 @@
 		5652C7E12EDE360C004EA129 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5652C7E52EDE3623004EA129 /* FetchedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
 		5652C7EB2EDE41F3004EA129 /* DishDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetails.swift; sourceTree = "<group>"; };
+		5652C81A2EE17F5D004EA129 /* LLTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLTheme.swift; sourceTree = "<group>"; };
+		5652C8212EE18721004EA129 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		5652C82A2EE1897B004EA129 /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
+		5652C82E2EE6242C004EA129 /* AppHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeader.swift; sourceTree = "<group>"; };
+		5652C8322EE62C4F004EA129 /* Text+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Ext.swift"; sourceTree = "<group>"; };
+		5652C8382EE62FED004EA129 /* Button+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Ext.swift"; sourceTree = "<group>"; };
 		565B2D052ED20DF7006380F1 /* Little Lemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little Lemon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +83,8 @@
 		5652C7952ED743B8004EA129 /* Little Lemon */ = {
 			isa = PBXGroup;
 			children = (
+				5652C8262EE18964004EA129 /* Components */,
+				5652C81F2EE18712004EA129 /* Utils */,
 				5652C7C12EDAE638004EA129 /* CoreData */,
 				5652C7B62EDAE4AC004EA129 /* Network */,
 				5652C7AF2ED81489004EA129 /* Profile */,
@@ -82,6 +96,7 @@
 				5652C7922ED743B8004EA129 /* Little_LemonApp.swift */,
 				5652C7942ED743B8004EA129 /* SessionUtils.swift */,
 				5652C7CA2EDAE897004EA129 /* ExampleDatabase.xcdatamodeld */,
+				5652C81A2EE17F5D004EA129 /* LLTheme.swift */,
 			);
 			path = "Little Lemon";
 			sourceTree = "<group>";
@@ -136,9 +151,28 @@
 				5652C7D42EDAEC72004EA129 /* Dish+CoreDataProperties.swift */,
 				5652C7DB2EDAED01004EA129 /* Dish+Extension.swift */,
 				5652C7E12EDE360C004EA129 /* Persistence.swift */,
-				5652C7E52EDE3623004EA129 /* FetchedObjects.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		5652C81F2EE18712004EA129 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5652C8212EE18721004EA129 /* Color+Ext.swift */,
+				5652C8322EE62C4F004EA129 /* Text+Ext.swift */,
+				5652C8382EE62FED004EA129 /* Button+Ext.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5652C8262EE18964004EA129 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5652C7E52EDE3623004EA129 /* FetchedObjects.swift */,
+				5652C82A2EE1897B004EA129 /* HeroView.swift */,
+				5652C82E2EE6242C004EA129 /* AppHeader.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		565B2CFC2ED20DF7006380F1 = {
@@ -237,15 +271,21 @@
 				5652C7DC2EDAED01004EA129 /* Dish+Extension.swift in Sources */,
 				5652C7E22EDE360C004EA129 /* Persistence.swift in Sources */,
 				5652C7962ED743B8004EA129 /* Onboarding.swift in Sources */,
+				5652C81B2EE17F5D004EA129 /* LLTheme.swift in Sources */,
+				5652C82F2EE6242C004EA129 /* AppHeader.swift in Sources */,
+				5652C82B2EE1897B004EA129 /* HeroView.swift in Sources */,
 				5652C7E62EDE3623004EA129 /* FetchedObjects.swift in Sources */,
+				5652C8332EE62C4F004EA129 /* Text+Ext.swift in Sources */,
 				5652C7EC2EDE41F3004EA129 /* DishDetails.swift in Sources */,
 				5652C7972ED743B8004EA129 /* ContentView.swift in Sources */,
 				5652C7CE2EDAEA67004EA129 /* MenuModel.swift in Sources */,
 				5652C7B92EDAE4BB004EA129 /* DTOs.swift in Sources */,
 				5652C7AB2ED782A4004EA129 /* Menu.swift in Sources */,
 				5652C7A42ED743F3004EA129 /* Home.swift in Sources */,
+				5652C8222EE18721004EA129 /* Color+Ext.swift in Sources */,
 				5652C7982ED743B8004EA129 /* SessionUtils.swift in Sources */,
 				5652C7992ED743B8004EA129 /* Little_LemonApp.swift in Sources */,
+				5652C8392EE62FED004EA129 /* Button+Ext.swift in Sources */,
 				5652C7D52EDAEC72004EA129 /* Dish+CoreDataClass.swift in Sources */,
 				5652C7D62EDAEC72004EA129 /* Dish+CoreDataProperties.swift in Sources */,
 				5652C7BF2EDAE4F7004EA129 /* LittleLemonService.swift in Sources */,

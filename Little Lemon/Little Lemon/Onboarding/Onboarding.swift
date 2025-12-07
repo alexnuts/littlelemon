@@ -14,62 +14,104 @@ struct Onboarding: View {
     @State private var email: String = ""
 
     @State private var message: String = ""
-    
+
     @State private var isLoggedIn = false
+
+    enum Field: Hashable {
+        case firstName
+        case lastName
+        case email
+    }
+
+    @FocusState private var focusedField: Field?
 
     var body: some View {
         NavigationView {
-            VStack(
-                spacing: 24.0,
-            ) {
-                NavigationLink(destination: Home(),isActive: $isLoggedIn){
-                    EmptyView()
-                }
-                
-                Text("Onboarding")
-                    .font(Font.largeTitle)
-                TextField("First Name", text: $firstName)
-                    .textFieldStyle(.roundedBorder)
-                TextField("Last Name", text: $lastName)
-                    .textFieldStyle(.roundedBorder)
-                TextField(
-                    "Email",
-                    text: $email,
-                ).keyboardType(.emailAddress)
-                    .textFieldStyle(.roundedBorder)
-                Button("Register") {
-                    if firstName.isEmpty || lastName.isEmpty || email.isEmpty {
-                        message = "Please fill in all fields."
-                        return
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(  //                spacing: 24.0,
+
+                ) {
+
+                    NavigationLink(destination: Home(), isActive: $isLoggedIn) {
+                        EmptyView()
                     }
-                    
-                    if !SessionUtils.isValidEmail(email) {
-                        message = "Please enter a valid email address."
-                        return
+
+                    AppHeader(displayProfilePic: false, displayBackBtn: false)
+                    HeroView(displaySearch: false)
+
+                    VStack(alignment: .leading) {
+
+                        Text("First name *")
+                            .onboardingTextStyle()
+                        TextField("First Name", text: $firstName)
+                            .focused($focusedField, equals: .firstName)
+                            .submitLabel(.next)
+                            .onSubmit {
+                                focusedField = .lastName
+                            }
+                        Text("Last name *")
+                            .onboardingTextStyle()
+                        TextField("Last Name", text: $lastName)
+                            .focused($focusedField, equals: .lastName)
+                            .submitLabel(.next)
+                            .onSubmit {
+                                focusedField = .email
+                            }
+
+                        Text("E-mail *")
+                            .onboardingTextStyle()
+                        TextField("E-mail", text: $email)
+                            .keyboardType(.emailAddress)
+                            .focused($focusedField, equals: .email)
+                            .submitLabel(.done)
+                            .onSubmit {
+                                submitForm()
+                            }
                     }
-                    
-                    SessionUtils.save(
-                        firstName: firstName,
-                        lastName: lastName,
-                        email: email
-                    )
-                    self.message = ""
-                    self.isLoggedIn = true
-                }
-                .buttonStyle(.borderedProminent)  // Optional styling to make it look like a button
-                .controlSize(.large)
-                
-                Spacer()
-                if !message.isEmpty {
-                    Text(message)
-                        .foregroundColor(.red)
-                        .font(.caption)
+                    .textFieldStyle(.roundedBorder)
+                    .disableAutocorrection(true)
+                    .padding()
+
+                    Button("Register") {
+                        submitForm()
+                    }.styleYellowButton()
+                        .padding()
+                        .padding(.top, 20)
+
+                    Spacer()
+                    if !message.isEmpty {
+                        Text(message)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                    }
                 }
             }
-            .padding(48.0)
-        }.onAppear{
+
+        }.onAppear {
             isLoggedIn = SessionUtils.isLoggedIn
         }
+    }
+
+    func submitForm() {
+        if firstName.isEmpty || lastName.isEmpty
+            || email.isEmpty
+        {
+            message = "Please fill in all fields."
+            return
+        }
+
+        if !SessionUtils.isValidEmail(email) {
+            message = "Please enter a valid email address."
+            return
+        }
+
+        SessionUtils.save(
+            firstName: firstName,
+            lastName: lastName,
+            email: email
+        )
+        self.message = ""
+        self.isLoggedIn = true
     }
 }
 
