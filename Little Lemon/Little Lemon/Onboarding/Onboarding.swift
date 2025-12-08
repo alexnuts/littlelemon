@@ -28,16 +28,14 @@ struct Onboarding: View {
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(  //                spacing: 24.0,
-
-                ) {
+                VStack {
 
                     NavigationLink(destination: Home(), isActive: $isLoggedIn) {
                         EmptyView()
                     }
 
                     AppHeader(displayProfilePic: false, displayBackBtn: false)
-                    HeroView(displaySearch: false)
+                    HeroView()
 
                     VStack(alignment: .leading) {
 
@@ -58,9 +56,10 @@ struct Onboarding: View {
                                 focusedField = .email
                             }
 
-                        Text("E-mail *")
+                        Text("Email *")
                             .onboardingTextStyle()
-                        TextField("E-mail", text: $email)
+                        TextField("Email", text: $email)
+                            .textContentType(.emailAddress)
                             .keyboardType(.emailAddress)
                             .focused($focusedField, equals: .email)
                             .submitLabel(.done)
@@ -89,6 +88,8 @@ struct Onboarding: View {
 
         }.onAppear {
             isLoggedIn = SessionUtils.isLoggedIn
+        }.onReceive(NotificationCenter.default.publisher(for: Notification.Name("LogoutNotification"))) { _ in
+            isLoggedIn = SessionUtils.isLoggedIn
         }
     }
 
@@ -112,6 +113,9 @@ struct Onboarding: View {
         )
         self.message = ""
         self.isLoggedIn = true
+        self.firstName = ""
+        self.lastName = ""
+        self.email = ""
     }
 }
 

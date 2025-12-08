@@ -16,4 +16,22 @@ extension Button {
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
     }
+    
+    func stylePrimaryButton() -> some View {
+        self.buttonSizing(.fitted)
+            .cornerRadius(8)
+            .tint(LLTheme.Colors.primary)
+            .foregroundStyle(LLTheme.Colors.onPrimaryText)
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+    }
+    
+    func styleSecondaryButton() -> some View {
+        self.buttonSizing(.fitted)
+            .tint(.white)
+            .border(LLTheme.Colors.primary, width: 1)
+            .foregroundStyle(LLTheme.Colors.primary)
+            .buttonStyle(.bordered)
+            .controlSize(.large)
+    }
 }

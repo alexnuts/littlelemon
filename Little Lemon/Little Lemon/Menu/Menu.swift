@@ -16,21 +16,31 @@ struct Menu: View {
 
     @State private var searchText = ""
 
+    @State private var displaySearch = false
+
     var body: some View {
         VStack {
-            Text("Little Lemon Menu")
-                .font(.title)
-                .padding()
-
-            TextField("Search menu", text: $searchText)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
+            AppHeader(displayProfilePic: true, displayBackBtn: false)
+                .frame(maxWidth: .infinity)
+                .frame(height: 56.0)
 
             FetchedObjects(
                 predicate: buildPredicate(),
                 sortDescriptors: buildSortDescriptors(),
             ) { (dishes: [Dish]) in
                 List {
+
+                    HeroView(onSearch: {
+                        self.displaySearch = !self.displaySearch
+                    })
+                    .listRowInsets(EdgeInsets())
+
+                    if displaySearch {
+                        TextField("Search menu", text: $searchText)
+                            .textFieldStyle(.roundedBorder)
+                            .padding(.horizontal)
+                    }
+
                     ForEach(dishes) { dish in
                         NavigationLink(destination: DishDetails(dish: dish)) {
                             HStack {
@@ -63,8 +73,13 @@ struct Menu: View {
                         }
                     }
                 }
+                .frame(maxWidth: .infinity)
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
             }
-        }.task {
+        }
+        .navigationBarHidden(true)
+        .task {
             await model.reload(viewContext)
         }
     }

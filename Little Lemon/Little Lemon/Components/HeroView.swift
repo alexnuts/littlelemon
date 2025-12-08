@@ -9,10 +9,10 @@ import SwiftUI
 
 struct HeroView: View {
 
-    let displaySearch: Bool
+    let onSearch: (() -> Void)?
 
-    init(displaySearch: Bool) {
-        self.displaySearch = displaySearch
+    init(onSearch: (() -> Void)? = nil) {
+        self.onSearch = onSearch
     }
 
     var body: some View {
@@ -55,10 +55,10 @@ struct HeroView: View {
             }
             .padding(.horizontal, 16.0)
 
-            if displaySearch {
+            if let callback = onSearch {
                 Spacer().frame(height: 16.0)
                 Button {
-                    print("Search")
+                    callback()
                 } label: {
                     Image(systemName: "magnifyingglass")
                         .padding(8.0)
@@ -73,14 +73,13 @@ struct HeroView: View {
             //                .backgroundColor(Color(hex: "EDEFEE"))
             //                    .shape(Circle())
         }
-//        .padding(.horizontal, 16.0)
+        //        .padding(.horizontal, 16.0)
         .frame(maxWidth: .infinity)
         .background(LLTheme.Colors.primary)
-        
 
     }
 }
 
 #Preview {
-    HeroView(displaySearch: true)
+    HeroView(onSearch: {})
 }

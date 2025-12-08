@@ -5,29 +5,38 @@
 //  Created by Alex Oriekhov on 26.11.2025.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct Home: View {
-    
+
     let persistenceController = PersistenceController.shared
-    
+
     var body: some View {
-        VStack {
-            TabView {
-                Menu()
-                    .tabItem {
-                        Label("Menu",systemImage: "list.dash")
-                    }
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        NavigationStack {
+            Menu()
+                .environment(
+                    \.managedObjectContext,
+                    persistenceController.container.viewContext
+                )
 
-                UserProfile()
-                    .tabItem {
-                        Label("Profile",systemImage: "square.and.pencil")
-                    }
-
-            }.navigationBarBackButtonHidden(true)
-        }
+        }.navigationBarBackButtonHidden(true)
+//            .navigationBarHidden(true)
+        //        VStack {
+        //            TabView {
+        //                Menu()
+        //                    .tabItem {
+        //                        Label("Menu",systemImage: "list.dash")
+        //                    }
+        //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        //
+        //                UserProfile()
+        //                    .tabItem {
+        //                        Label("Profile",systemImage: "square.and.pencil")
+        //                    }
+        //
+        //            }.navigationBarBackButtonHidden(true)
+        //        }
     }
 }
 
