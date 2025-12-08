@@ -14,6 +14,7 @@ extension Button {
             .tint(LLTheme.Colors.variant)
             .foregroundStyle(LLTheme.Colors.textPrimary)
             .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle(radius: 8))
             .controlSize(.large)
     }
     
@@ -23,6 +24,7 @@ extension Button {
             .tint(LLTheme.Colors.primary)
             .foregroundStyle(LLTheme.Colors.onPrimaryText)
             .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle(radius: 8))
             .controlSize(.large)
     }
     
@@ -32,6 +34,7 @@ extension Button {
             .border(LLTheme.Colors.primary, width: 1)
             .foregroundStyle(LLTheme.Colors.primary)
             .buttonStyle(.bordered)
+            .buttonBorderShape(.roundedRectangle(radius: 8))
             .controlSize(.large)
     }
 }
