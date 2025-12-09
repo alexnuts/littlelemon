@@ -34,6 +34,9 @@ struct Menu: View {
 
                     HeroView(onSearch: {
                         self.displaySearch = !self.displaySearch
+                        if !self.displaySearch {
+                            self.searchText = ""
+                        }
                     })
                     .listRowInsets(EdgeInsets())
 
