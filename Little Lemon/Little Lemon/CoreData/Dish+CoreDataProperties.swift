@@ -22,6 +22,7 @@ extension Dish {
     @NSManaged public var price: Float
     @NSManaged public var desc: String?
     @NSManaged public var image: String?
+    @NSManaged public var category: String?
 
 }
 

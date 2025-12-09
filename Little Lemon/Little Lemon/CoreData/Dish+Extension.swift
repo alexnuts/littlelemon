@@ -22,6 +22,7 @@ extension Dish {
                 dish.price = Float(menuItem.price) ?? 0.0
                 dish.desc = menuItem.description
                 dish.image = menuItem.image
+                dish.category = menuItem.category
             }
         try? context.save()
     }

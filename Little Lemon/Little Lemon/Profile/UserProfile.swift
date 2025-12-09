@@ -109,6 +109,7 @@ struct UserProfile: View {
                         .toggleStyle(CheckboxToggleStyle())
 
                     Button("Logout") {
+                        PersistenceController.shared.clear()
                         SessionUtils.clear()
 //                        presentation.wrappedValue.dismiss()
                         NotificationCenter.default.post(name: Notification.Name("LogoutNotification"), object: nil)
@@ -138,6 +139,9 @@ struct UserProfile: View {
 
         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .navigationBarBackButtonHidden()
+            .onAppear {
+                reload()
+            }
     }
 
     func reload() {

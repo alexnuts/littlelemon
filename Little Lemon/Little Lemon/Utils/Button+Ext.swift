@@ -17,7 +17,7 @@ extension Button {
             .buttonBorderShape(.roundedRectangle(radius: 8))
             .controlSize(.large)
     }
-    
+
     func stylePrimaryButton() -> some View {
         self.buttonSizing(.fitted)
             .cornerRadius(8)
@@ -27,7 +27,25 @@ extension Button {
             .buttonBorderShape(.roundedRectangle(radius: 8))
             .controlSize(.large)
     }
-    
+
+    func stylePrimarySelectedButton() -> some View {
+        self.buttonSizing(.fitted)
+            .cornerRadius(8)
+            .tint(LLTheme.Colors.primary)
+            .foregroundStyle(LLTheme.Colors.onPrimaryText)
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+    }
+
+    func stylePrimaryUnselectedButton() -> some View {
+        self.buttonSizing(.fitted)
+            .cornerRadius(8)
+            .tint(LLTheme.Colors.primaryPale)
+            .foregroundStyle(LLTheme.Colors.primary)
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
+    }
+
     func styleSecondaryButton() -> some View {
         self.buttonSizing(.fitted)
             .tint(.white)

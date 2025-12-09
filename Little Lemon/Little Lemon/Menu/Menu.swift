@@ -12,11 +12,13 @@ struct Menu: View {
 
     @Environment(\.managedObjectContext) private var viewContext
 
-    @ObservedObject var model = MenuModel()
+    @StateObject var model = MenuModel()
 
     @State private var searchText = ""
 
     @State private var displaySearch = false
+
+    @State private var selectedCategory: String = ""
 
     var body: some View {
         VStack {
@@ -39,6 +41,32 @@ struct Menu: View {
                         TextField("Search menu", text: $searchText)
                             .textFieldStyle(.roundedBorder)
                             .padding(.horizontal)
+                    }
+
+                    Text("ORDER FOR DELIVERY!")
+                        .padding(.top, 8.0)
+                        .padding(.bottom, 4.0)
+                        .fontWeight(.semibold)
+
+                    let categories = model.menuCategories
+
+                    if !categories.isEmpty {
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(categories, id: \.self) { c in
+                                    if c == selectedCategory {
+                                        Button(c) {
+                                            self.selectedCategory = ""
+                                        }.stylePrimarySelectedButton()
+                                    } else {
+                                        Button(c) {
+                                            self.selectedCategory = c
+                                        }.stylePrimaryUnselectedButton()
+                                    }
+
+                                }
+                            }
+                        }
                     }
 
                     ForEach(dishes) { dish in
@@ -84,6 +112,19 @@ struct Menu: View {
         }
     }
 
+    func prepareCategoties(_ dishes: [Dish]) -> [String] {
+        var categories: [String] = []
+
+        dishes.forEach { d in
+            let cat = d.category ?? ""
+            if !cat.isEmpty && !categories.contains(cat) {
+                categories.append(cat)
+            }
+        }
+
+        return categories
+    }
+
     func buildSortDescriptors() -> [NSSortDescriptor] {
         return [
             NSSortDescriptor(
@@ -95,10 +136,17 @@ struct Menu: View {
     }
 
     func buildPredicate() -> NSPredicate {
-        if searchText.isEmpty {
-            return NSPredicate(value: true)
+        var predicateMain: NSPredicate = NSPredicate(value: true)
+        if !searchText.isEmpty {
+            predicateMain = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+        }
+        
+        if !selectedCategory.isEmpty {
+            let catPredicate = NSPredicate(format: "category == %@", selectedCategory)
+            
+            return NSCompoundPredicate(type: .and, subpredicates: [predicateMain, catPredicate])
         } else {
-            return NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+            return predicateMain
         }
     }
 }

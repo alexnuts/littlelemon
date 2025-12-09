@@ -5,23 +5,31 @@
 //  Created by Alex Oriekhov on 29.11.2025.
 //
 
-import Foundation
-import CoreData
 import Combine
+import CoreData
+import Foundation
 
 @MainActor
 class MenuModel: ObservableObject {
-    
-    @Published var menuItems: [MenuItem] = [MenuItem]()
+
+    @Published var menuCategories: [String] = []
 
     func reload(_ ctx: NSManagedObjectContext) async {
         do {
-//            PersistenceController.shared.clear()
-//            try? ctx.save()
-            
+
             let menu = try await LittleLemonService.fetchMenuItems()
             Dish.createDishesFrom(menuItems: menu, ctx)
-            self.menuItems = menu
+
+            var categories : [String] = []
+            menu.forEach {
+                let c = $0.category ?? ""
+                if !c.isEmpty && !categories.contains(c) {
+                    categories.append(c)
+                }
+            }
+            
+            self.menuCategories = categories.sorted()
+
         } catch {
             print(error.localizedDescription)
         }
